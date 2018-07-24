@@ -71,7 +71,7 @@ def initialize_gpu_from_weights_file(model, weights_file, gpu_id=0):
     unscoped_param_names = OrderedDict()  # Print these out in model order
     for blob in model.params:
         keyname = c2_utils.UnscopeName(str(blob))
-        if (keyname == 'kps_score_lowres_w' or keyname == 'kps_score' or keyname == 'kps_score_reshaped' or keyname == 'keypoint_locations_int32' or keyname == 'keypoint_weights'):
+        if (keyname == 'kps_score_lowres' or keyname == 'kps_score' or keyname == 'kps_score_reshaped' or keyname == 'keypoint_locations_int32' or keyname == 'keypoint_weights'):
             continue
         unscoped_param_names[c2_utils.UnscopeName(str(blob))] = True
     with c2_utils.NamedCudaScope(gpu_id):
